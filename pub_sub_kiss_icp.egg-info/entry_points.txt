@@ -1,2 +1,0 @@
-[console_scripts]
-pub-sub-kiss-icp = pub_sub_kiss_icp.main:main
