@@ -1,3 +1,36 @@
+Metadata-Version: 2.4
+Name: pub-sub-kiss-icp
+Version: 0.1.0
+Summary: A pub-sub wrapper for KISS-ICP: subscribe to point cloud topics, generate odometry estimates, and publish results
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: kiss-icp>=1.0.0
+Requires-Dist: numpy>=1.24.0
+Requires-Dist: pyyaml>=6.0
+Provides-Extra: kafka
+Requires-Dist: confluent-kafka>=2.0.0; extra == "kafka"
+Provides-Extra: pulsar
+Requires-Dist: pulsar-client>=3.0.0; extra == "pulsar"
+Provides-Extra: eventhubs
+Requires-Dist: azure-eventhub>=5.11.0; extra == "eventhubs"
+Provides-Extra: iggy
+Requires-Dist: iggy-py>=0.6.0; extra == "iggy"
+Provides-Extra: googlepubsub
+Requires-Dist: google-cloud-pubsub>=2.18.0; extra == "googlepubsub"
+Provides-Extra: all
+Requires-Dist: confluent-kafka>=2.0.0; extra == "all"
+Requires-Dist: pulsar-client>=3.0.0; extra == "all"
+Requires-Dist: azure-eventhub>=5.11.0; extra == "all"
+Requires-Dist: iggy-py>=0.6.0; extra == "all"
+Requires-Dist: google-cloud-pubsub>=2.18.0; extra == "all"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-mock>=3.10.0; extra == "dev"
+Requires-Dist: confluent-kafka>=2.0.0; extra == "dev"
+Requires-Dist: pulsar-client>=3.0.0; extra == "dev"
+Requires-Dist: azure-eventhub>=5.11.0; extra == "dev"
+Requires-Dist: google-cloud-pubsub>=2.18.0; extra == "dev"
+
 # pub-sub-kiss-icp
 
 A pub-sub wrapper for [KISS-ICP](https://github.com/PRBonn/kiss-icp): subscribe to a point cloud topic, generate LiDAR odometry estimates with KISS-ICP, and publish the results to an outbound topic.

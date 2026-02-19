@@ -1,0 +1,26 @@
+# Azure Event Hubs configuration example.
+# Install: pip install "pub-sub-kiss-icp[eventhubs]"
+
+source:
+  type: eventhubs
+  topic: pointcloud-input    # Event Hub name
+  connection:
+    conn_str: "Endpoint=sb://your-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<your-key>"
+    consumer_group: "$Default"
+    # Optional: provide Storage Account details for checkpointing
+    # checkpoint_store_conn_str: "DefaultEndpointsProtocol=https;AccountName=...;AccountKey=...;EndpointSuffix=core.windows.net"
+    # blob_container_name: kiss-icp-checkpoints
+
+destination:
+  type: eventhubs
+  topic: odometry-output    # Event Hub name
+  connection:
+    conn_str: "Endpoint=sb://your-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<your-key>"
+
+kiss_icp:
+  max_range: 100.0
+  min_range: 0.0
+  voxel_size: 1.0
+  deskew: true
+
+poll_timeout_ms: 1000

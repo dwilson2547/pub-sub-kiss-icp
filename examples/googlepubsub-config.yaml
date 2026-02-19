@@ -1,0 +1,28 @@
+# Google Cloud Pub/Sub configuration example.
+# Install: pip install "pub-sub-kiss-icp[googlepubsub]"
+# The subscription must already exist in your GCP project.
+
+source:
+  type: googlepubsub
+  topic: pointcloud-input        # Pub/Sub topic name
+  connection:
+    project_id: my-gcp-project
+    subscription: kiss-icp-sub   # Existing Pull subscription
+    # Optional: path to service account JSON key file.
+    # If omitted, Application Default Credentials (ADC) are used.
+    # credentials_file: /path/to/service-account.json
+
+destination:
+  type: googlepubsub
+  topic: odometry-output
+  connection:
+    project_id: my-gcp-project
+    # credentials_file: /path/to/service-account.json
+
+kiss_icp:
+  max_range: 100.0
+  min_range: 0.0
+  voxel_size: 1.0
+  deskew: true
+
+poll_timeout_ms: 1000
