@@ -1,0 +1,26 @@
+# StreamNative Cloud configuration example.
+# Uses the same pulsar-client adapter with cloud connection parameters.
+# Install: pip install "pub-sub-kiss-icp[pulsar]"
+
+source:
+  type: streamnative
+  topic: persistent://your-org/default/pointcloud-input
+  connection:
+    service_url: "pulsar+ssl://your-cluster.aws.streamnative.cloud:6651"
+    authentication_token: "<your-api-key-or-jwt-token>"
+    subscription_name: kiss-icp-sub
+
+destination:
+  type: streamnative
+  topic: persistent://your-org/default/odometry-output
+  connection:
+    service_url: "pulsar+ssl://your-cluster.aws.streamnative.cloud:6651"
+    authentication_token: "<your-api-key-or-jwt-token>"
+
+kiss_icp:
+  max_range: 100.0
+  min_range: 0.0
+  voxel_size: 1.0
+  deskew: true
+
+poll_timeout_ms: 1000

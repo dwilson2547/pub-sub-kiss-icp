@@ -1,0 +1,18 @@
+# Mock configuration – uses in-memory queues (no external broker required).
+# Useful for local testing and CI.
+
+source:
+  type: mock
+  topic: mock-pointcloud-input
+
+destination:
+  type: mock
+  topic: mock-odometry-output
+
+kiss_icp:
+  max_range: 100.0
+  min_range: 0.0
+  voxel_size: 1.0
+  deskew: true
+
+poll_timeout_ms: 100

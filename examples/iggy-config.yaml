@@ -1,0 +1,33 @@
+# Iggy configuration example.
+# Install: pip install "pub-sub-kiss-icp[iggy]"
+# Iggy server must be running before starting this pipeline.
+
+source:
+  type: iggy
+  topic: pointcloud-input    # Iggy topic name
+  connection:
+    host: "127.0.0.1"
+    port: 8090
+    stream: kiss-icp          # Iggy stream name
+    partition_id: 1
+    username: iggy
+    password: iggy
+
+destination:
+  type: iggy
+  topic: odometry-output
+  connection:
+    host: "127.0.0.1"
+    port: 8090
+    stream: kiss-icp
+    partition_id: 1
+    username: iggy
+    password: iggy
+
+kiss_icp:
+  max_range: 100.0
+  min_range: 0.0
+  voxel_size: 1.0
+  deskew: true
+
+poll_timeout_ms: 1000

@@ -1,0 +1,23 @@
+# Apache Pulsar configuration example.
+# Install: pip install "pub-sub-kiss-icp[pulsar]"
+
+source:
+  type: pulsar
+  topic: persistent://public/default/pointcloud-input
+  connection:
+    service_url: "pulsar://localhost:6650"
+    subscription_name: kiss-icp-sub
+
+destination:
+  type: pulsar
+  topic: persistent://public/default/odometry-output
+  connection:
+    service_url: "pulsar://localhost:6650"
+
+kiss_icp:
+  max_range: 100.0
+  min_range: 0.0
+  voxel_size: 1.0
+  deskew: true
+
+poll_timeout_ms: 1000

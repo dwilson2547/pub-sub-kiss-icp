@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pub-sub-kiss-icp"
+version = "0.1.0"
+description = "A pub-sub wrapper for KISS-ICP: subscribe to point cloud topics, generate odometry estimates, and publish results"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "kiss-icp>=1.0.0",
+    "numpy>=1.24.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+kafka = ["confluent-kafka>=2.0.0"]
+pulsar = ["pulsar-client>=3.0.0"]
+eventhubs = ["azure-eventhub>=5.11.0"]
+iggy = ["iggy-py>=0.6.0"]
+googlepubsub = ["google-cloud-pubsub>=2.18.0"]
+all = [
+    "confluent-kafka>=2.0.0",
+    "pulsar-client>=3.0.0",
+    "azure-eventhub>=5.11.0",
+    "iggy-py>=0.6.0",
+    "google-cloud-pubsub>=2.18.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-mock>=3.10.0",
+    "confluent-kafka>=2.0.0",
+    "pulsar-client>=3.0.0",
+    "azure-eventhub>=5.11.0",
+    "google-cloud-pubsub>=2.18.0",
+]
+
+[project.scripts]
+pub-sub-kiss-icp = "pub_sub_kiss_icp.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pub_sub_kiss_icp*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
